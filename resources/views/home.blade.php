@@ -57,6 +57,39 @@
                 </ul>
             </div>
         </div>
+        <h2 class="my-3">Todos os Posts</h2>
+        <div class="row my-2">
+            <div class="col-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://unsplash.it/400/200" alt="Imagem de capa do card" />
+                    <div class="card-body">
+                        <h5 class="card-title">Título do card</h5>
+                        <p class="card-text">Descrição do card</p>
+                        <a href="#" class="btn btn-primary">Ver mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://unsplash.it/400/200" alt="Imagem de capa do card" />
+                    <div class="card-body">
+                        <h5 class="card-title">Título do card</h5>
+                        <p class="card-text">Descrição do card</p>
+                        <a href="#" class="btn btn-primary">Ver mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://unsplash.it/400/200" alt="Imagem de capa do card" />
+                    <div class="card-body">
+                        <h5 class="card-title">Título do card</h5>
+                        <p class="card-text">Descrição do card</p>
+                        <a href="#" class="btn btn-primary">Ver mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection
