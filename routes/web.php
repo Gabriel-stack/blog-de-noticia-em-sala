@@ -14,9 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class]);
 
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
-Route::get('/post', function(){
-    return view('post');
-});
+Route::get('/post', [HomeController::class, 'post'])->name('post');
+
+Route::resource('posts', PostController::class);
+
+Route::resource('categorias', CategoriaController::class);
+
+Route::resource('usuarios', UsuarioController::class);
+
+Route::resource('comentarios', ComentarioController::class);
