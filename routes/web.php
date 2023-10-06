@@ -26,3 +26,6 @@ Route::resource('categorias', CategoriaController::class);
 Route::resource('usuarios', UsuarioController::class);
 
 Route::resource('comentarios', ComentarioController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
