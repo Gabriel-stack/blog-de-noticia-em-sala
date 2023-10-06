@@ -27,10 +27,10 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo03">
             <ul class="navbar-nav d-flex justify-content-end mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Login</a>
+                    <a class="nav-link" href="{{ route('login') }}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cadastro</a>
+                    <a class="nav-link" href="{{ route('register') }}">Cadastro</a>
                 </li>
             </ul>
         </div>

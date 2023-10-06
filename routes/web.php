@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ComentarioController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UsuarioController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +34,4 @@ Route::resource('usuarios', UsuarioController::class);
 Route::resource('comentarios', ComentarioController::class);
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
