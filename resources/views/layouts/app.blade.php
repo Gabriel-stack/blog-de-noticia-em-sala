@@ -84,7 +84,7 @@
             <div class="container">
                 <ul class="nav nav-tabs nav-fill my-4">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Posts</a>
+                        <a class="nav-link" href="{{ route('posts.index') }}">Posts</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Categorias</a>
