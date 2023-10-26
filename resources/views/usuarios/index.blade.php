@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('titulo', 'Categorias')
+@section('titulo', 'Usuários')
 
 @section('content')
 <div class="container bg-white shadow p-4">
-	{{-- botão para ir para página de criar uma categoria --}}
+	{{-- botão para ir para página de criar um usuário --}}
 	<div class="text-end mb-3">
 		<a
 			href=""
@@ -15,14 +15,15 @@
 	</div>
 	{{-- FIM BOTÃO --}}
 
-	{{-- tabela de categorias --}}
+	{{-- tabela de usuários --}}
 	<div class="table-responsive">
 		<table class="table table-bordered">
-			<caption>Lista de categorias</caption>
+			<caption>Lista de usuários</caption>
 			<thead>
 				<tr>
 					<th scope="col">#</th>
 					<th scope="col">Nome</th>
+					<th scope="col">Email</th>
 					<th scope="col">Data de criação</th>
 					<th scope="col">Data de atualização</th>
 					<th scope="col">Ações</th>
@@ -33,6 +34,5 @@
 		</table>
 	</div>
 	{{-- FIM TABELA --}}
-
 </div>
 @endsection

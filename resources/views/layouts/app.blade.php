@@ -87,10 +87,10 @@
                         <a class="nav-link" href="{{ route('posts.index') }}">Posts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categorias</a>
+                        <a class="nav-link" href="{{route('categorias.index')}}">Categorias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Usuários</a>
+                        <a class="nav-link" href="{{ route('usuarios.index') }}">Usuários</a>
                     </li>
                 </ul>
             </div>
