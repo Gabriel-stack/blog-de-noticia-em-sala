@@ -6,7 +6,7 @@
     <div class="container bg-white shadow p-4">
         {{-- botão para ir para página de criar um post --}}
         <div class="text-end mb-3">
-            <a href="" class="btn btn-primary">
+            <a href="{{route('posts.create')}}" class="btn btn-primary">
                 Adicionar
             </a>
         </div>
