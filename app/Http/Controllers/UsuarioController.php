@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class UsuarioController extends Controller
 {
@@ -23,7 +26,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        return view('usuarios.create');
     }
 
     /**
@@ -34,7 +37,21 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'nome' => ['required', 'min:3', 'max:255'],
+            'email' => ['required', 'email', 'unique:usuarios,email'],
+            'senha' => ['required', 'max:60', Password::min(6)],
+            'confirmar_senha' => ['required', 'same:senha'],
+        ]);
+
+        $usuario = User::create([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'senha' => Hash::make($request->senha),
+        ]);
+
+        return redirect()->route('usuarios.index');
     }
 
     /**

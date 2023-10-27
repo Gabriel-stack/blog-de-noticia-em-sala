@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -34,7 +35,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'titulo' => ['required', 'min:3', 'max:255'],
+            'conteudo' => ['required', 'min:3'],
+            'categoria' => ['required', 'exists:categorias,id'],
+            'data_publicacao' => ['required', 'date'],
+        ]);
+
+        $post = Post::create([
+            'titulo' => $request->titulo,
+            'conteudo' => $request->conteudo,
+            'categoria_id' => $request->categoria,
+            'data_publicacao' => $request->data_publicacao,
+        ]);
+
+        return redirect()->route('posts.index');
     }
 
     /**

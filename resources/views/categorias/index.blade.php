@@ -7,7 +7,7 @@
 	{{-- botão para ir para página de criar uma categoria --}}
 	<div class="text-end mb-3">
 		<a
-			href=""
+			href="{{ route('categorias.create') }}"
 			class="btn btn-primary"
 		>
 			Adicionar
@@ -29,6 +29,35 @@
 				</tr>
 			</thead>
 			<tbody>
+				@forelse($categorias as $categoria)
+				<tr>
+					<td>{{ $categoria->id }}</td>
+					<td>{{ $categoria->nome }}</td>
+					<td> {{ $categoria->created_at }}</td>
+					<td> {{ $categoria->updated_at }}</td>
+					<td>
+						<a
+							href=""
+							class="btn btn-primary"
+						>
+							Editar
+						</a>
+						<a
+							href=""
+							class="btn btn-danger"
+						>
+							Excluir
+						</a>
+					</td>
+				</tr>
+				@empty
+				<tr>
+					<td
+						colspan="5"
+						class="text-center"
+					>Nenhuma categoria cadastrada</td>
+				</tr>
+				@endforelse
 			</tbody>
 		</table>
 	</div>

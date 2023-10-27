@@ -6,7 +6,7 @@
 <div class="container bg-white shadow p-4">
 	<h3 class="text-center">Criar post</h3>
 	<form
-		action=""
+		action="{{ route('posts.store') }}"
 		method="post"
 	>
 		@csrf

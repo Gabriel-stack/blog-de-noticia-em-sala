@@ -7,7 +7,7 @@
 	{{-- botão para ir para página de criar um usuário --}}
 	<div class="text-end mb-3">
 		<a
-			href=""
+			href="{{ route('usuarios.create') }}"
 			class="btn btn-primary"
 		>
 			Adicionar
