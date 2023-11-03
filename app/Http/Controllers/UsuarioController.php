@@ -16,7 +16,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        return view('usuarios.index');
+        $usuarios = User::all();
+        return view('usuarios.index', compact('usuarios'));
     }
 
     /**
@@ -96,6 +97,8 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = User::findOrFail($id);
+        $usuario->delete();
+        return redirect()->route('usuarios.index');
     }
 }

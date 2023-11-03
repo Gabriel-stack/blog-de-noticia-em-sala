@@ -30,6 +30,33 @@
 				</tr>
 			</thead>
 			<tbody>
+				@forelse($usuarios as $usuario)
+				<tr>
+					<td>{{ $usuario->id }}</td>
+					<td>{{ $usuario->name }}</td>
+					<td>{{ $usuario->email }}</td>
+					<td> {{ $usuario->created_at }}</td>
+					<td> {{ $usuario->updated_at }}</td>
+					<td>
+						<a href=""
+						   class="btn btn-primary">
+							Editar
+						</a>
+					<form action="{{ route('usuarios.destroy', $usuario->id) }}"
+						  method="POST">
+						@csrf
+						@method('DELETE')
+						<button type="submit"
+								class="btn btn-danger">Excluir</button>
+					</form>
+					</td>
+				</tr>
+				@empty
+				<tr>
+					<td colspan="6"
+						class="text-center">Nenhum usuário cadastrado</td>
+				</tr>
+				@endforelse
 			</tbody>
 		</table>
 	</div>

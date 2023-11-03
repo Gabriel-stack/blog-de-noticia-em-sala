@@ -15,5 +15,11 @@ class Post extends Model
         'conteudo',
         'data_publicacao',
         'categoria_id',
+        'imagem'
     ];
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
+    }
 }

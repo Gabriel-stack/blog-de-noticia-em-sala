@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('titulo', 'Criar post')
+@section('titulo', 'Editar post')
 
 @section('content')
 <div class="container bg-white shadow p-4">
-	<h3 class="text-center">Criar post</h3>
-	
-	<form action="{{ route('posts.store') }}"
+	<h3 class="text-center">Editar post</h3>
+	<form action="{{ route('posts.update', $post->id) }}"
 		  method="post"
 		  enctype="multipart/form-data">
 		@csrf
+		@method('PUT')
 		<div class="mb-3">
 			<label for="titulo"
 				   class="form-label">Título <span class="text-danger">*</span></label>
@@ -17,6 +17,7 @@
 				   class="form-control"
 				   id="titulo"
 				   name="titulo"
+				   value="{{ $post->titulo }}"
 				   required>
 		</div>
 		<div class="mb-3">
@@ -26,7 +27,7 @@
 					  id="conteudo"
 					  name="conteudo"
 					  rows="3"
-					  required></textarea>
+					  required>{{$post->conteudo}}</textarea>
 		</div>
 		<div class="mb-3">
 			<label for="imagem"
@@ -34,8 +35,7 @@
 			<input type="file"
 				   class="form-control"
 				   id="imagem"
-				   name="imagem"
-				   required>
+				   name="imagem">
 		</div>
 		<div class="mb-3">
 			<label for="categoria"
@@ -46,7 +46,9 @@
 					required>
 				<option selected>Selecione uma categoria</option>
 				@foreach($categorias as $categoria)
-				<option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
+				<option value="{{ $categoria->id }}"
+						@if($categoria->id == $post->categoria_id) selected @endif
+					>{{ $categoria->nome }}</option>
 				@endforeach
 			</select>
 		</div>
@@ -58,6 +60,7 @@
 				   class="form-control"
 				   id="data_publicacao"
 				   name="data_publicacao"
+				   value="{{ $post->data_publicacao }}"
 				   required>
 		</div>
 		<div class="mb-3">

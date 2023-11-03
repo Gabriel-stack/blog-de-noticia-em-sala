@@ -42,12 +42,13 @@
 						>
 							Editar
 						</a>
-						<a
-							href=""
-							class="btn btn-danger"
-						>
-							Excluir
-						</a>
+					<form action="{{ route('categorias.destroy', $categoria->id) }}"
+						  method="POST">
+						@csrf
+						@method('DELETE')
+						<button type="submit"
+								class="btn btn-danger">Excluir</button>
+					</form>
 					</td>
 				</tr>
 				@empty

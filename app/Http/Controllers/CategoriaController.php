@@ -90,6 +90,8 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categoria = Categoria::findOrFail($id);
+        $categoria->delete();
+        return redirect()->route('categorias.index');
     }
 }

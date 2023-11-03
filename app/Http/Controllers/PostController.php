@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index');
+        $posts = Post::all();
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -24,7 +26,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $categorias = Categoria::all();
+        return view('posts.create', compact('categorias'));
     }
 
     /**
@@ -35,20 +38,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
-        $request->validate([
+        $dados =  $request->validate([
             'titulo' => ['required', 'min:3', 'max:255'],
             'conteudo' => ['required', 'min:3'],
-            'categoria' => ['required', 'exists:categorias,id'],
+            'categoria_id' => ['required', 'exists:categorias,id'],
             'data_publicacao' => ['required', 'date'],
+            'imagem' => ['required', 'image'],
         ]);
 
-        $post = Post::create([
-            'titulo' => $request->titulo,
-            'conteudo' => $request->conteudo,
-            'categoria_id' => $request->categoria,
-            'data_publicacao' => $request->data_publicacao,
-        ]);
+        $dados['imagem'] = $request->file('imagem')->store('imagens', 'public');
+
+        $post = Post::create($dados);
 
         return redirect()->route('posts.index');
     }
@@ -72,7 +72,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $categorias = Categoria::all();
+        return view('posts.edit', compact('post', 'categorias'));
     }
 
     /**
@@ -84,7 +86,23 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $dados =  $request->validate([
+                'titulo' => ['required', 'min:3', 'max:255'],
+                'conteudo' => ['required', 'min:3'],
+                'categoria_id' => ['required', 'exists:categorias,id'],
+                'data_publicacao' => ['required', 'date'],
+                'imagem' => ['nullable', 'image'],
+            ]);
+
+        if ($request->hasFile('imagem')) {
+            $dados['imagem'] = $request->file('imagem')->store('imagens', 'public');
+        }
+
+        $post->update($dados);
+
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -95,6 +113,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect()->route('posts.index');
     }
 }
